@@ -38,6 +38,20 @@ def greet_person():
                            person=player,
                            compliment=compliment)
 
+@app.route('/game')
+def show_madlib_form():
+    """ Renders madlibs if user wants to play. Displays goodbye if not. """
+
+    wants_to_play = request.args.get("wants_to_play")
+
+    if wants_to_play == "yes":
+        # redirect to madlib
+        return render_template('game.html')
+
+    else:
+        # redirect to goodbye
+        return render_template('goodbye.html')
+
 
 if __name__ == '__main__':
     # debug=True gives us error messages in the browser and also "reloads" our web app
