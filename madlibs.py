@@ -58,6 +58,7 @@ def show_madlib():
     """ Renders madlib in new page """
 
     person = request.args.get('person')
+    animals = request.args.getlist('animal')
     color = request.args.get('color')
     noun = request.args.get('noun')
     adjective = request.args.get('adjective')
