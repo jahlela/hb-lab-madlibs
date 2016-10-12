@@ -1,0 +1,6 @@
+body {
+    width: 80%;
+    margin: 0 auto;
+    /* background-color is defined inline for madlib.html because of dynamic 
+    rendering based on user input*/
+    }

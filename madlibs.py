@@ -66,17 +66,30 @@ def show_madlib():
     if not person:
         person = 'A Nony Mouse'
 
-    if color == None:
+    if not animals: 
+        animals = ['horse', 'parrot', 'eel']
+
+    if not color:
         color = '#4db6ac'
 
-    if noun == None:
+    if not noun:
         noun = 'nudibranch'
 
-    if adjective == None:
+    if not adjective:
         adjective = 'malaised'
 
-    return render_template('madlib.html', 
+    if len(animals) == 1:
+        animal_string = animals[0]
+    elif len(animals) == 2:
+        animal_string = " and ".join(animals)
+    elif len(animals) > 2:
+        animal_string = ", ".join(animals[:-1]) + ", and " + animals[-1]
+    
+
+
+    return render_template('madlib.html',
                             person=person,
+                            animals=animal_string,
                             color=color, 
                             noun=noun, 
                             adjective=adjective)
