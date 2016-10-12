@@ -40,7 +40,8 @@ def greet_person():
 
 @app.route('/game')
 def show_madlib_form():
-    """ Renders madlibs if user wants to play. Displays goodbye if not. """
+    """ Renders game form, and links to game if user wants to play. 
+    Displays goodbye if not. """
 
     wants_to_play = request.args.get("wants_to_play")
 
@@ -51,6 +52,33 @@ def show_madlib_form():
     else:
         # redirect to goodbye
         return render_template('goodbye.html')
+
+@app.route('/madlib')
+def show_madlib():
+    """ Renders madlib in new page """
+
+    person = request.args.get('person')
+    color = request.args.get('color')
+    noun = request.args.get('noun')
+    adjective = request.args.get('adjective')
+
+    if not person:
+        person = 'A Nony Mouse'
+
+    if color == None:
+        color = '#4db6ac'
+
+    if noun == None:
+        noun = 'nudibranch'
+
+    if adjective == None:
+        adjective = 'malaised'
+
+    return render_template('madlib.html', 
+                            person=person,
+                            color=color, 
+                            noun=noun, 
+                            adjective=adjective)
 
 
 if __name__ == '__main__':
